@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="京东">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Spring 注解驱动开发 - Zhiqun Wang的博客 | ZhiqunWang&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 知行合一，致良知。 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Zhiqun.Wang</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、bean注册相关"><span class="toc-text">一、bean注册相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Configuration"><span class="toc-text">@Configuration</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bean"><span class="toc-text">@Bean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Scope"><span class="toc-text">@Scope</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ComponentScan"><span class="toc-text">@ComponentScan</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lazy"><span class="toc-text">@Lazy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conditional"><span class="toc-text">@Conditional</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Import"><span class="toc-text">@Import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ImportResource"><span class="toc-text">@ImportResource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、bean生命周期相关"><span class="toc-text">二、bean生命周期相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#指定初始化和销毁方法"><span class="toc-text">指定初始化和销毁方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现spring-bean生命周期相关接口"><span class="toc-text">实现spring bean生命周期相关接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用JSR-250注解"><span class="toc-text">使用JSR-250注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现BeanPostProcessor"><span class="toc-text">实现BeanPostProcessor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现xxxAware接口"><span class="toc-text">实现xxxAware接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、bean依赖注入相关"><span class="toc-text">三、bean依赖注入相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Value"><span class="toc-text">@Value</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PropertySource"><span class="toc-text">@PropertySource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Autowired"><span class="toc-text">@Autowired</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Qualifier"><span class="toc-text">@Qualifier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Primary"><span class="toc-text">@Primary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Resource"><span class="toc-text">@Resource</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Inject"><span class="toc-text">@Inject</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Profile"><span class="toc-text">@Profile</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 知行合一，致良知。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Spring 注解驱动开发
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-10-04 23:52:11</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#spring" title="spring">spring</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="一、bean注册相关"><a href="#一、bean注册相关" class="headerlink" title="一、bean注册相关"></a>一、bean注册相关</h3><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><p>Java Bean的配置来源标识，与XML配置异曲同工。</p>
+<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><p>具体bean配置，默认方法名称为Bean的name，可通过value指定多个BeanName</p>
+<p>init-method、destroy-method指定初始化、销毁方法。</p>
+<h4 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h4><p>bean在容器中的存在形式，默认singleton。（容器在初始化时进行预加载）</p>
+<p>可选类型：prototype（原型，每次请求获取的bean都是新创建的）、request、session</p>
+<h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><p>扫描注册类，定义bean扫描规则。</p>
+<p>value:指定扫描的包路径</p>
+<p>includeFilters:指定扫描的时候按照什么规则包含哪些组件</p>
+<p>excludeFilters:指定扫描的时候按照什么规则排除哪些组件</p>
+<p>其中includeFilters，excludeFilters可自定义过滤器，自定义过滤器需实现TypeFilter接口。</p>
+<h4 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h4><p>针对singleton而说，当加上该注解后，容器启动时不进行预加载，而是第一次应用索要bean时进行加载。</p>
+<h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><p>使用在类上或者方法上，定义bean的注册条件，条件规则器实现Condition接口。</p>
+<h4 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h4><p>快速给容器中导入组件,导入后在容器中组件的name 是导入组件的全类名。</p>
+<p> @Import(value={Color.class,MyImportSelector.class,MyImportBeanDefinitionRegistrar.class})</p>
+<p>三种类型的导入方法：</p>
+<ul>
+<li>导入具体组件的class类</li>
+<li>实现ImportSelector接口，导入该实现类，返回需要导入组件的全类名集合</li>
+<li>实现ImportBeanDefinitionRegistrar接口registerBeanDefinitions方法，在该方法内手动进行注册组件的BeanDefinition</li>
+</ul>
+<h4 id="ImportResource"><a href="#ImportResource" class="headerlink" title="@ImportResource"></a>@ImportResource</h4><p>  导入beanDefinition定义的xml文件，即描述bean的xml文件</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>给容器中注册bean的方式：</p>
+<ul>
+<li>@ComponentScan + @Controller、@Service、@Reporstory、@Componenet</li>
+<li>@Bean 方式导入三方组件</li>
+<li>@Import快速导入三方组件</li>
+<li>@ImportResource 导入定义描述bean的xml文件</li>
+</ul>
+<h3 id="二、bean生命周期相关"><a href="#二、bean生命周期相关" class="headerlink" title="二、bean生命周期相关"></a>二、bean生命周期相关</h3><h4 id="指定初始化和销毁方法"><a href="#指定初始化和销毁方法" class="headerlink" title="指定初始化和销毁方法"></a>指定初始化和销毁方法</h4><p>@Bean指定init-method,destroy-method,单实例是在容器关闭时调用destroy方法，而多实例则不会管理这个bean销毁</p>
+<h4 id="实现spring-bean生命周期相关接口"><a href="#实现spring-bean生命周期相关接口" class="headerlink" title="实现spring bean生命周期相关接口"></a>实现spring bean生命周期相关接口</h4><p>bean 实现InitializingBean接口afterPropertiesSet 方法执行初始化，实现DisposableBean接口destroy方法进行销毁前的执行</p>
+<h4 id="使用JSR-250注解"><a href="#使用JSR-250注解" class="headerlink" title="使用JSR-250注解"></a>使用JSR-250注解</h4><p>@PostConstruct、 @PreDestroy</p>
+<h4 id="实现BeanPostProcessor"><a href="#实现BeanPostProcessor" class="headerlink" title="实现BeanPostProcessor"></a>实现BeanPostProcessor</h4><p>实现BeanPostProcessor，对所有bean创建后，init-method之前、之后对bean进行包装等操作。</p>
+<h4 id="实现xxxAware接口"><a href="#实现xxxAware接口" class="headerlink" title="实现xxxAware接口"></a>实现xxxAware接口</h4><p>spring内部将进行值的回调设置。比如ApplicaitonContextAware,BeanNameAware,EmbeddedValueResolverAware</p>
+<h3 id="三、bean依赖注入相关"><a href="#三、bean依赖注入相关" class="headerlink" title="三、bean依赖注入相关"></a>三、bean依赖注入相关</h3><h4 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h4><ul>
+<li>@Value(“张三”)</li>
+<li>@Value(“#{20-2}”)</li>
+<li>@Vaule(“${}”) 读取配置文件中的值（在运行变量中的值）</li>
+</ul>
+<h4 id="PropertySource"><a href="#PropertySource" class="headerlink" title="@PropertySource"></a>@PropertySource</h4><p>@PropertySource(“classpath:/person.properties”) 将配置文件中的值导入环境变量</p>
+<h4 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h4><p> 默认按照组件的类型去匹配，类型匹配到多个然后按照name去匹配。默认必须可以找到匹配的值，可通过@Autowired(required = false)设置非必须注入，可标注在方法、属性、参数上</p>
+<h4 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h4><p>指定匹配的模式按照bean的name匹配</p>
+<h4 id="Primary"><a href="#Primary" class="headerlink" title="@Primary"></a>@Primary</h4><p>spring装配的时候默认使用首选的bean，当一个类型匹配多个实例后，优先级的选择。</p>
+<h4 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h4><p>JSR-250提供，默认按照组件名称进行装配,@Resource(name=””)可指定name.但是没有按照类型同时按照优先级进行匹配</p>
+<h4 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h4><h4 id="Profile"><a href="#Profile" class="headerlink" title="@Profile"></a>@Profile</h4><p>@Profile(“dev”)  自动装配环境搭建，默认default</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
